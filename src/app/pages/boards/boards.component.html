@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<main class="container mx-auto md:flex">
+  <aside class="hidden w-64 px-4 pt-10 md:block">
+    <ul class="space-y-1 mb-6">
+      <li>
+        <a class="text flex rounded py-1.5 text-sm font-medium transition duration-200 ease-out hover:bg-gray-200 hover:ease-in active:bg-sky-100 active:text-sky-500"
+          href="">
+          <fa-icon class="mx-2" [icon]="faTrello"></fa-icon>
+          <p class="font-bold">Boards</p>
+        </a>
+      </li>
+      <li>
+        <a class="flex rounded py-1.5 text-sm font-medium transition duration-200 ease-out hover:bg-gray-200 hover:ease-in active:bg-sky-100 active:text-sky-500"
+          href="">
+          <fa-icon class="mx-2" [icon]="faBorderTopLeft"></fa-icon>
+          <p class="font-bold">Templates</p>
+        </a>
+      </li>
+      <li>
+        <a class="flex rounded py-1.5 text-sm font-medium transition duration-200 ease-out hover:bg-gray-200 hover:ease-in active:bg-sky-100 active:text-sky-500"
+          href="">
+          <fa-icon class="mx-2" [icon]="faChartLine"></fa-icon>
+          <p class="font-bold">Home</p>
+        </a>
+      </li>
+    </ul>
+    <div class="pt-4">
+      <div class="text-lg py-1 px-2 flex justify-between font-semibold text-blue-950">
+        <p>Workspaces</p>
+        <p>+</p>
+      </div>
+      <div>
+        <cdk-accordion>
+          <cdk-accordion-item #accordionMenu="cdkAccordionItem">
+            <button class="flex w-full justify-between px-4 py-1 font-semibold text-blue-950" type="button"
+              (click)="accordionMenu.toggle()">
+              My Workspace
+              <fa-icon [icon]="accordionMenu.expanded ? faAngleUp : faAngleDown"></fa-icon>
+            </button>
+            <div [style.display]="accordionMenu.expanded ? '' : 'none'">
+              <cdk-accordion-item #accordionItem="cdkAccordionItem" *ngFor="let item of items">
+                <button class="block px-3 py-1 ml-2 flex-col text-sm text-gray-700" type="button"
+                  (click)="accordionItem.toggle()">
+                  <fa-icon [icon]="item.icon"></fa-icon>
+                  {{ item.label }}
+                  <fa-icon *ngIf="item.items" [icon]="accordionItem.expanded ? faAngleUp : faAngleDown"></fa-icon>
+                </button>
+                <div [style.display]="accordionItem.expanded ? '' : 'none'">
+                  <ul class="list-disc px-10 text-sm text-gray-700">
+                    <li *ngFor="let subItem of item.items">{{ subItem.label }}</li>
+                  </ul>
+                </div>
+              </cdk-accordion-item>
+            </div>
+          </cdk-accordion-item>
+        </cdk-accordion>
+      </div>
+    </div>
+  </aside>
+
+  <article class="w-full">
+    <section class="px-3">
+      <h3 class="pt-5 font-bold md:pt-10">
+        <fa-icon class="px-3 text-2xl" [icon]="faClock"></fa-icon>
+        Recently viewed
+      </h3>
+      <div class="my-4 grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] gap-4">
+        <div class="relative h-28 w-full rounded bg-blue-500 p-3 hover:cursor-pointer hover:opacity-75">
+          <p class="absolute font-semibold text-white pl-1.5 text-16">Demo</p>
+        </div>
+        <div class="relative h-28 w-full rounded bg-blue-500 p-3 hover:cursor-pointer hover:opacity-75">
+          <p class="absolute font-semibold text-white pl-1.5 text-16">Board 01</p>
+        </div>
+        <div class="relative h-28 w-full rounded bg-blue-500 p-3 hover:cursor-pointer hover:opacity-75">
+          <p class="absolute font-semibold text-white pl-1.5 text-16">Board 02</p>
+        </div>
+        <div class="relative h-28 w-full rounded bg-blue-500 p-3 hover:cursor-pointer hover:opacity-75">
+          <p class="absolute font-semibold text-white pl-1.5 text-16">Board 03</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
