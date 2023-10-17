@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 // Components
 import { LoginComponent } from './pages/login/login.component';
 import { BoardsComponent } from './pages/boards/boards.component';
+import { BoardComponent } from './pages/board/board.component';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'board', component: BoardsComponent}
+  {path: 'boards', component: BoardsComponent},
+  {path: 'board', component: BoardComponent}
 ];
 
 @NgModule({
