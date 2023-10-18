@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faBell, faPlus, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { Column } from 'src/app/model/todo.model';
 
 
@@ -27,9 +27,12 @@ import { Column } from 'src/app/model/todo.model';
 })
 
 export class BoardComponent {
-
   faXmark = faXmark;
+  faBell = faBell;
+  faPlus = faPlus;
+  faEllipsis = faEllipsis;
   listTitle: string = '';
+  cardTitle: string[] = [];
 
   columns: Column[] = [
     {
@@ -100,7 +103,17 @@ export class BoardComponent {
     }
   }
 
-  clearTitleInput () {
+  clearTitleInput() {
     this.listTitle = '';
+  }
+
+  addTodo(index: number) {
+    const todoTitle = this.cardTitle[index];
+  
+    if (todoTitle) {
+      const newTodo = { id: 0, title: todoTitle };
+      this.columns[index].todos.push(newTodo);
+      this.cardTitle[index] = '';
+    }
   }
 }

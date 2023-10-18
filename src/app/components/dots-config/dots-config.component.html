@@ -1,0 +1,27 @@
+<button class="" (click)="isOpen = !isOpen" cdkOverlayOrigin #cardOptionsOverlay='cdkOverlayOrigin' type="button">
+  <fa-icon [icon]="faEllipsis"></fa-icon>
+</button>
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="cardOptionsOverlay" [cdkConnectedOverlayOpen]="isOpen">
+  <div class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+    <div class="py-3 px-4 flex justify-between">
+      <span class="block text-center font-bold text-sm">Card Options</span>
+    </div>
+    <ul class="py-1">
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Add a New Card</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Copy List</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Move List</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Watch</a>
+      </li>
+      <li class="cursor-pointer">
+        <a type="button" (click)="deleteCard()" class="block py-2 px-4 text-sm hover:bg-[#CB200D] hover:text-white">Delete Card</a>
+      </li>
+    </ul>
+  </div>
+</ng-template>

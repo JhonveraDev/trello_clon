@@ -6,7 +6,7 @@
         <h2 class="text-xl font-bold text-white my-4">Demo Board</h2>
       </div>
       <div class="flex grow items-start w-full h-full overflow-x-scroll" cdkDropListGroup>
-        <div class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0" *ngFor="let column of columns">
+        <div class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0" *ngFor="let column of columns; let i = index">
           <div class="flex justify-between py-1">
             <h3 class="text-sm font-bold ml-2">{{ column.title }}</h3>
           </div>
@@ -14,12 +14,20 @@
             [cdkDropListData]="column.todos">
             <div *ngFor="let todo of column.todos" cdkDrag
               class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400">
-              {{ todo.title }}
+              {{ todo.title | titlecase }}
             </div>
+          </div>
+          <div class="flex flex-row items-center mt-2 gap-x-4">
+            <button class="h-10" (click)="addTodo(i)" type="button">
+              <fa-icon [icon]="faPlus"></fa-icon>
+              <span class="ml-2">Add a Card</span>
+            </button>
+            <input class="rounded w-28 h-8 placeholder-center text-center border-gray-300" type="text" placeholder="Card Title" [(ngModel)]="cardTitle[i]">
+            <app-dots-config [dataArray]="columns" [dataIndex]="i"></app-dots-config>
           </div>
         </div>
         <div class="rounded bg-gray-200 w-72 p-2 mr-3 flex flex-col">
-          <input class="rounded" type="text" placeholder="Enter List Title" [(ngModel)]="listTitle">
+          <input class="rounded border-gray-300" type="text" placeholder="Enter List Title" [(ngModel)]="listTitle">
           <div class="flex flex-row items-center">
             <button class="bg-[#0C5681] rounded w-32 h-10 mt-2 text-white" (click)="addColumn()" type="button">Add Column</button>
             <button class="ml-2 w-6 h-6" (click)="clearTitleInput()" type="button">

@@ -14,6 +14,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { BoardComponent } from './pages/board/board.component';
 import { FormsModule } from '@angular/forms';
+import { DotsConfigComponent } from './components/dots-config/dots-config.component';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     BtnComponent,
     BoardsComponent,
     NavbarComponent,
-    BoardComponent
+    BoardComponent,
+    DotsConfigComponent
   ],
   imports: [
     BrowserModule,
