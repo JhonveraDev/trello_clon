@@ -1,4 +1,4 @@
 # TrelloClone
-![](previews/preview-01.PNG)
-![](previews/preview-02.PNG)
-![](previews/preview-03.PNG)
+![](previews/preview-01.png)
+![](previews/preview-02.png)
+![](previews/preview-03.png)
