@@ -109,7 +109,6 @@ export class BoardComponent {
 
   addTodo(index: number) {
     const todoTitle = this.cardTitle[index];
-  
     if (todoTitle) {
       const newTodo = { id: 0, title: todoTitle };
       this.columns[index].todos.push(newTodo);
